@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"forceConsistentCasingInFileNames": true,
+		"lib": ["es2020"],
+		"module": "es2020",
+		"moduleResolution": "node",
+		"noEmit": true,
+		"resolveJsonModule": true,
+		"strict": true,
+		"target": "ES2020",
+		"types": ["node"]
+	},
+	"exclude": ["node_modules"],
+	"include": ["./**/*.d.ts", "./**/*.js"],
+	"typeRoots": ["node_modules/@types"]
+}
