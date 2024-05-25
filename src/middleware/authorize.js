@@ -1,6 +1,7 @@
 /**
+ *  * @typedef {import('./../repositories/profile/profile').default} Profile
  * @typedef {import('express').NextFunction} NextFunction
- * @typedef {import('express').Request & { profile: {} }} Request
+ * @typedef {import('express').Request & { profile: Profile}} Request
  * @typedef {import('express').Response} Response
  */
 
@@ -22,7 +23,13 @@ async function authorize(req, res, next) {
 
     // @ts-ignore -- Not possible be undefined
     const profile = await bindServices.profileService.findProfileById(parseInt(profileId));
-    
+
+    if (profile === null) {
+        res.status(404).end();
+    }
+
+    // @ts-ignore -- Not possible be null
+    req.profile = profile;
     next();
 }
 

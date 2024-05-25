@@ -15,10 +15,14 @@ class ProfileRepostitory extends Repository {
     
 	/**
 	 * @param {number} id
-	 * @returns {Promise<Profile>}
+	 * @returns {Promise<Profile | null>}
 	 */
 	async findById(id) {
-		const response = await this.model.findOne({where: {id}}); 
+		const response = await this.model.findOne({where: {id}});
+
+		if (!response) {
+			return null;
+		}
 
 		return response.dataValues;
 	}

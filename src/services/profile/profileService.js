@@ -15,7 +15,7 @@ class ProfileService {
 
     /**
      * @param {Number} id
-     * @returns {Promise<Profile>}
+     * @returns {Promise<Profile | null>}
      */
     async findProfileById(id) {
         return this.#profileRepository.findById(id);
