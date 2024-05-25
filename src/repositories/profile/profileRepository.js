@@ -6,8 +6,6 @@ const Repository = require('../repository');
 
 class ProfileRepostitory extends Repository {
 
-    model;
-
     constructor() {
         super();
         this.model = this.models.Profile;

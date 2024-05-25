@@ -1,3 +1,3 @@
-const profile = require('./profileRepository');
+const Profile = require('./profileRepository');
 
-module.exports = profile;
+module.exports = Profile;

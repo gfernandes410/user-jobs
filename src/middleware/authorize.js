@@ -17,7 +17,7 @@ const bindServices = require('./../bindServices');
 async function authorize(req, res, next) {
     const profileId = req.get('id');
 
-    if (profileId === null || profileId === undefined) {
+    if (profileId === null || profileId === undefined || profileId === '') {
         res.status(404).end();
     }
 

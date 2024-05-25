@@ -1,3 +1,8 @@
+/**
+ * @typedef {import('sequelize').Model} Model
+ */
+
+const { Op } = require('sequelize');
 const { sequelize } = require('../model');
 
 const express = require('express');
@@ -5,6 +10,27 @@ const app = express();
 
 class Repository {
 
+    scope = {
+        contracts: {
+            active: {
+                status: {[Op.ne]: 'terminated'},
+            }
+        },
+        jobs: {
+            unpaid: {
+                paid: {[Op.eq]: null},
+            },
+            paided: {
+                paid: {[Op.eq]: true}
+            },
+        }
+    }
+
+    /**
+     * @type {Model}
+     */
+    // @ts-ignore
+    model;
     models;
 
     constructor() {
