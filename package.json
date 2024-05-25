@@ -15,6 +15,7 @@
   "homepage": "https://github.com/gfernandes410/user-jobs#readme",
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
+    "@types/sequelize": "^4.28.20",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "faker": "^6.6.6",
