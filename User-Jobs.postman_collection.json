@@ -1,0 +1,510 @@
+{
+	"info": {
+		"_postman_id": "366a25c5-ba1d-47c4-8b69-5f221a9b79a9",
+		"name": "User-Jobs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5457347",
+		"_collection_link": "https://cloudy-rocket-867902.postman.co/workspace/inrt~d717a831-81c6-40ae-91a1-8be90249428d/collection/5457347-366a25c5-ba1d-47c4-8b69-5f221a9b79a9?action=share&source=collection_link&creator=5457347"
+	},
+	"item": [
+		{
+			"name": "Tests",
+			"item": [
+				{
+					"name": "Test Server",
+					"item": [
+						{
+							"name": "SUCCESS",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.expect(pm.response.code).to.equal(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "id",
+										"value": "9"
+									}
+								],
+								"url": {
+									"raw": "{{url}}",
+									"host": [
+										"{{url}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}",
+											"host": [
+												"{{url}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 24 May 2024 21:08:57 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/get-jobs",
+					"item": [
+						{
+							"name": "Return Jobs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.expect(pm.response.code).to.equal(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has just more than one element\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.be.an('array');",
+											"    pm.expect(responseData.length).to.gt(0);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "id",
+										"value": "10"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/get-jobs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"get-jobs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "not job",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.expect(pm.response.code).to.equal(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has just no jobs\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.be.an('array');",
+											"    pm.expect(responseData.length).to.eq(0);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "id",
+										"value": "1"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/get-jobs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"get-jobs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ERROR - Invalid User",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 404\", function () {",
+											"    pm.expect(pm.response.code).to.equal(404);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "id",
+										"value": "1111"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/get-jobs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"get-jobs"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "/get-jobs",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "id",
+						"value": "10"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/get-jobs",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"get-jobs"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "SUCCESS",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "id",
+								"value": "2222"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/get-jobs",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"get-jobs"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3157"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"c55-Q/e4yMBbikCztGDlPr2M4NAPJ2c\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 May 2024 03:34:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"jobId\": 3,\n        \"description\": \"Cavus amo delectus decipio ventus certe eaque. Pauci autus libero adsidue clam eos textor. Blanditiis tyrannus unus delectatio vorago sonitus vitium collum adulatio delego.\\nSuus aiunt curvo bellum saepe tepesco veritatis deprimo. Magnam terra ventus cariosus. Bene suscipit beatus abscido validus.\\nCupressus vae convoco. Bestia dolorem vir causa torrens theca aperte. Statua conduco tamisium terminatio tepesco contra cognomen virga sublime aveho.\",\n        \"price\": 556,\n        \"paid\": true,\n        \"ContractId\": 2,\n        \"ClientId\": 10,\n        \"ContractorId\": 4\n    },\n    {\n        \"jobId\": 6,\n        \"description\": \"Speciosus cum tricesimus velociter apud voluptatum vesica taedium solum. Sol civitas fugiat curo venustas aliquam cornu apud aegrus. Tollo ancilla conscendo.\\nCentum canis culpa corrupti earum vaco tollo. Debitis aegrus triduana. Decipio vulgaris collum adstringo deputo cupiditas viduo collum.\\nVito tracto accommodo villa atavus administratio reiciendis. Facilis conduco tam sapiente corrupti laboriosam tactus tumultus admoveo. Tempore videlicet tabgo cado viridis.\",\n        \"price\": 721,\n        \"paid\": true,\n        \"ContractId\": 2,\n        \"ClientId\": 10,\n        \"ContractorId\": 4\n    },\n    {\n        \"jobId\": 15,\n        \"description\": \"Deprecator alo crapula aeger timidus bellum benigne velociter. Sono acervus coerceo curis sustineo arbitro. Acsi agnosco toties.\\nAudacia vigilo atavus taceo fugit dolorum. Cur sonitus constans temporibus centum bene tracto. Cribro tunc vesco coruscus.\\nAdmitto corpus demergo. Quod venustas ustulo hic truculenter adfero. Cribro civitas beneficium solvo desparatus adicio explicabo temporibus ullam.\",\n        \"price\": 283,\n        \"paid\": false,\n        \"ContractId\": 2,\n        \"ClientId\": 10,\n        \"ContractorId\": 4\n    },\n    {\n        \"jobId\": 16,\n        \"description\": \"Tibi sumptus terra. Ciminatio cenaculum approbo comitatus benigne uterque. Amoveo sunt careo.\\nVestigium degusto tener verbum strues vobis patior. Culpa collum defungo delego suasoria minima. Expedita patria theatrum nobis nemo.\\nEsse callide tyrannus vos vero. Subnecto ceno vilitas tener turba suspendo amo. Conduco omnis cumque teneo.\",\n        \"price\": 280,\n        \"paid\": true,\n        \"ContractId\": 3,\n        \"ClientId\": 10,\n        \"ContractorId\": 7\n    },\n    {\n        \"jobId\": 17,\n        \"description\": \"Bene veritas conspergo. Beneficium desolo defero valetudo vetus. Debeo canonicus depraedor.\\nVotum alii dolore textus debeo. Tremo urbs ultio. Cursus voluptate debitis illum crustulum candidus.\\nCruentus artificiose bellicus desipio auxilium territo blandior argumentum subito. Utpote termes videlicet autus summisse. Barba bis possimus.\",\n        \"price\": 859,\n        \"paid\": true,\n        \"ContractId\": 3,\n        \"ClientId\": 10,\n        \"ContractorId\": 7\n    },\n    {\n        \"jobId\": 19,\n        \"description\": \"Paens alioqui adstringo cultellus capillus consectetur vehemens coadunatio despecto tabula. Alienus culpo valeo impedit a cinis vulariter. Volubilis abutor deripio tripudio advoco ventus cubicularis communis.\\nAegrotatio fugiat volutabrum decumbo unde tam. Temporibus corrupti decumbo ultio tres labore suadeo tenetur. Creta aegrotatio antepono calcar ventito coniecto subseco amet cruentus centum.\\nProvident alo vorago viriliter bellicus eaque capio adsuesco repudiandae. Virgo triduana aperio adeptio incidunt arguo calamitas. Cruentus cribro suus atavus vulnero.\",\n        \"price\": 715,\n        \"paid\": true,\n        \"ContractId\": 3,\n        \"ClientId\": 10,\n        \"ContractorId\": 7\n    }\n]"
+				},
+				{
+					"name": "ERROR - Invalid User",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "id",
+								"value": "2222"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/get-jobs",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"get-jobs"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 May 2024 03:36:35 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "No jobs",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/get-jobs",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"get-jobs"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 May 2024 03:45:04 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[]"
+				}
+			]
+		},
+		{
+			"name": "Test Server",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "id",
+						"value": "9"
+					}
+				],
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 24 May 2024 21:08:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "localhost:3001",
+			"type": "string"
+		}
+	]
+}
